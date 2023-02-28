@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="landingpage">
+        <div class="navbar">
+          <a class="navlogo">EzR☑ll</a>
+          <button class="hamburger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                <path d="M3 12h18M3 6h18M3 18h18"/>
+              </svg>
+            </button>
+          <div class="navlinkwrap">
+            <span class="navlink selectedlink"><a href="index.html">Home</a></span>
+            <span class="navlink"><a href="register.html">Register now</a></span>
+            <span class="navlink"><a href="index.html">How it works</a></span>
+          </div>
+          <div class="buttonwrap">
+            <button class="createbtn selectedbtn">CREATE SCHEDULE</button>
+            <button class="createbtn">REPORT A PROBLEM</button>
+          </div>
+        </div>
+ 
+        <div class="started">
+          <p class="started-boldtext">Register here!</p>
+          
+          <div class="started-items">
+            <div class="container">
+    
+                <form method="POST" name= 'registered' action="{% url 'schedule' %}">
+                  {% csrf_token %}
+                    <div class="row">
+                        <div class="column">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your name here" name="name" value="{{name}}">
+                        </div>
+                        <div class="column">
+                            <label for="number">DU ID</label>
+                            <input type="text" id="text" placeholder="Your 87 number here" required min="9" name="duid" value="{{name}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <label for="subject">Major</label>
+                            <input type="text" id="subject" placeholder="Your major here" required  name="major" value="{{name}}">
+                        </div>
+                        <div class="column">
+                            <label for="contact">Minor(s)</label>
+                            <input type="text" id="subject" placeholder="Your minor(s) here"  required name="minor" value="{{du}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <label for="program">Program Requirements (CRN)</label>
+                            <textarea id="program" placeholder="Add classes required for your major here, separated by commas: (2345,5442, ...)"  minlength="4"  name="PoCRN" value="{{PoCRN}}">
+                            </textarea>
+                            <label for="conjoinedclass"> Conjoined Class?</label><br>
+                            <input type="checkbox" id="conjoined" name="conjoined" value="no">
+                        </div>
+                        <div class="column">
+                            <label for="program">Priority classes (CRN)</label>
+                            <textarea id="program" placeholder="Add classes you need this quarter, separated by commas: (2345,5442, ...)"  minlength="4" name="PrCRN" value="{{PrCRN}}"></textarea>
+                            <label for="conjoinedclass"> Conjoined Class?</label><br>
+                            <input type="checkbox" id="conjoined" name="conjoined" value="no">
+                        </div>
+                        <div class="column">
+                            <label for="program">Electives(CRN)</label>
+                            <textarea id="program" placeholder="Add electives here, separated by commas: (2345,5442, ...)"  minlength="4" name="elec" value="{{elec}}"></textarea>
+                            <label for="conjoinedclass"> Conjoined Class?</label><br>
+                            <input type="checkbox" id="conjoined" name="conjoined" value="no">
+                        </div>
+                    </div>
+                    <div class="form_button" >
+                        <button class="form_button_1"> Done </button>
+                      </div>
+                </form>
+           
+            </div>
+            {% if messages %}
+          
+           {{ message }}
+          
+          {% endif %}
+        </div>
+       
+
+
+
+
+        <div class="footer">
+          <div class="footer-main">
+            This is still a beta version of the product.
+          </div>
+          <div class="footer-navigate">
+            <div class="nav">
+              <h5>Home</h5>
+              <p>Register</p>
+            </div>
+            <div class="nav">
+              <h5>Contact</h5>
+              <p>Facebook</p>
+              <p>Instagram</p>
+              <p>Twitter</p>
+              <p>Email</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer2">
+          <div></div>
+          <p>Copyright 2023 EzRoll</p>
+        </div>
+      </div></body></html>
